@@ -13,12 +13,60 @@
 
 <body>
     <div id="header">
+    <!-- HEADER -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="logo">
+                    <a href="#"><img src="{{ asset('images/libellum-logo2.png') }}"></a>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hi {{ auth()->user()->name }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ route('change_password') }}">Change Password</a>
+                        <a class="dropdown-item" href="#" onclick="document.getElementById('logoutForm').submit()">Log Out</a>
+                    </div>
+                    <form method="post" id="logoutForm" action="{{ route('logout') }}">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /HEADER -->
+<div id="menubar">
+    <!-- Menu Bar -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="menu">
+                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ route('authors') }}">Authors</a></li>
+                    <li><a href="{{ route('publishers') }}">Publishers</a></li>
+                    <li><a href="{{ route('categories') }}">Categories</a></li>
+                    <li><a href="{{ route('books') }}">Books</a></li>
+                    <li><a href="{{ route('students') }}">Reg Students</a></li>
+                    <li><a href="{{ route('book_issued') }}">Book Issue</a></li>
+                    <li><a href="{{ route('reports') }}">Reports</a></li>
+                    <li><a href="{{ route('settings') }}">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {{--<div id="header">
         <!-- HEADER -->
         <div class="container">
             <div class="row">
                 <div class="offset-md-4 col-md-4">
                     <div class="logo">
-                        <a href="#"><img src="{{ asset('images/library.png') }}"></a>
+                        <a href="#"><img src="{{ asset('images/libellum-logo2.png') }}"></a>
                     </div>
                 </div>
                 <div class="offset-md-2 col-md-2">
@@ -58,7 +106,7 @@
                 </div>
             </div>
         </div>
-    </div> <!-- /Menu Bar -->
+    </div>--}} <!-- /Menu Bar -->
 
     @yield('content')
 
